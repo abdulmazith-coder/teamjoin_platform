@@ -69,9 +69,9 @@ const locations = ["All", "Remote", "On-site"];
 
 export default function Discover() {
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [requestedProjects, setRequestedProjects] = useState<number[]>([]);
+  const [requestedProjects, setRequestedProjects] = useState([]);
 
-  const handleRequestJoin = (projectId: number) => {
+  const handleRequestJoin = (projectId) => {
     setRequestedProjects(prev => [...prev, projectId]);
   };
 

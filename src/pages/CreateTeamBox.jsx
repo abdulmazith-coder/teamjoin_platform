@@ -18,14 +18,14 @@ const roles = [
 ];
 
 export default function CreateTeamBox() {
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [selectedCategories, setSelectedCategories] = useState([]);
   const [projectRoles, setProjectRoles] = useState(roles);
   const [title, setTitle] = useState("AI Study Buddy");
   const [description, setDescription] = useState("Describe what you're building, the problem, and why now...");
   const [maxMembers, setMaxMembers] = useState("5");
   const [visibility, setVisibility] = useState("public");
 
-  const toggleCategory = (category: string) => {
+  const toggleCategory = (category) => {
     setSelectedCategories(prev => 
       prev.includes(category) 
         ? prev.filter(c => c !== category)
@@ -33,7 +33,7 @@ export default function CreateTeamBox() {
     );
   };
 
-  const updateRoleCount = (roleIndex: number, increment: boolean) => {
+  const updateRoleCount = (roleIndex, increment) => {
     setProjectRoles(prev => prev.map((role, index) => 
       index === roleIndex 
         ? { ...role, count: Math.max(0, role.count + (increment ? 1 : -1)) }

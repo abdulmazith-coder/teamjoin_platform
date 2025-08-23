@@ -61,9 +61,9 @@ const pendingRequests = [
 ];
 
 export default function Profile() {
-  const [withdrawnRequests, setWithdrawnRequests] = useState<number[]>([]);
+  const [withdrawnRequests, setWithdrawnRequests] = useState([]);
 
-  const handleWithdraw = (requestId: number) => {
+  const handleWithdraw = (requestId) => {
     setWithdrawnRequests(prev => [...prev, requestId]);
   };
 

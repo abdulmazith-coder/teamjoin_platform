@@ -62,14 +62,14 @@ const chatMessages = [
 ];
 
 export default function TeamManagement() {
-  const [acceptedMembers, setAcceptedMembers] = useState<number[]>([]);
-  const [rejectedMembers, setRejectedMembers] = useState<number[]>([]);
+  const [acceptedMembers, setAcceptedMembers] = useState([]);
+  const [rejectedMembers, setRejectedMembers] = useState([]);
 
-  const handleAccept = (memberId: number) => {
+  const handleAccept = (memberId) => {
     setAcceptedMembers(prev => [...prev, memberId]);
   };
 
-  const handleReject = (memberId: number) => {
+  const handleReject = (memberId) => {
     setRejectedMembers(prev => [...prev, memberId]);
   };
 

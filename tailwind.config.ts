@@ -61,7 +61,19 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				brand: {
+					primary: 'hsl(var(--brand-primary))',
+					secondary: 'hsl(var(--brand-secondary))'
+				},
+				surface: {
+					elevated: 'hsl(var(--surface-elevated))'
+				},
+				text: {
+					secondary: 'hsl(var(--text-secondary))'
+				},
+				success: 'hsl(var(--success))',
+				warning: 'hsl(var(--warning))'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

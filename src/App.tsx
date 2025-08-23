@@ -13,6 +13,8 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
+// TeamJoin - Connect with talented teammates and build together
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>

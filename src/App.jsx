@@ -27,9 +27,9 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/discover" element={<Discover />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/team-management" element={<TeamManagement />} />
-            <Route path="/create" element={<CreateTeamBox />} />
-            <Route path="/idea/:id" element={<IdeaDetail />} />
+            <Route path="/team-management" />
+            <Route path="/create"  />
+            <Route path="/idea/:id" />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Layout>

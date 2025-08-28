@@ -4,13 +4,13 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Layout from "./components/Layout";
-import Index from "./pages/Index";
-import Discover from "./pages/Discover";
-import Profile from "./pages/Profile";
-import TeamManagement from "./pages/TeamManagement";
-import CreateTeamBox from "./pages/CreateTeamBox";
-import IdeaDetail from "./pages/IdeaDetail";
-import NotFound from "./pages/NotFound";
+import Index from "./frontend/Index";
+import Discover from "./frontend/Discover";
+import Profile from "./frontend/Profile";
+import TeamManagement from "./frontend/TeamManagement";
+import CreateTeamBox from "./frontend/CreateTeamBox";
+import IdeaDetail from "./frontend/IdeaDetail";
+import NotFound from "./frontend/NotFound";
 
 const queryClient = new QueryClient();
 
@@ -27,9 +27,9 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/discover" element={<Discover />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/team-management" />
-            <Route path="/create"  />
-            <Route path="/idea/:id" />
+            <Route path="/team-management" element={<TeamManagement />} />
+            <Route path="/create" element={<CreateTeamBox />} />
+            <Route path="/idea/:id" element={<IdeaDetail />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Layout>

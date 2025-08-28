@@ -8,7 +8,6 @@ import { ExternalLink, Github, Linkedin, Globe, Users, Edit } from "lucide-react
 const profile = {
   name: "Jordan Lee",
   title: "Builder + designer. Passionate about AI for productivity, clean UX, and hackathon weekends.",
-  avatar: "/placeholder.svg",
   joined: 4,
   pending: 2,
   followers: 128,
@@ -79,7 +78,6 @@ export default function Profile() {
         <CardContent className="p-8">
           <div className="flex flex-col md:flex-row gap-6 items-center md:items-start">
             <Avatar className="h-24 w-24">
-              <AvatarImage src={profile.avatar} />
               <AvatarFallback className="text-2xl">JL</AvatarFallback>
             </Avatar>
             
@@ -145,7 +143,6 @@ export default function Profile() {
             <div key={project.id} className="flex items-center justify-between p-4 rounded-lg border hover:bg-muted/50 transition-colors">
               <div className="flex items-center gap-4">
                 <Avatar className="h-10 w-10">
-                  <AvatarImage src="/placeholder.svg" />
                   <AvatarFallback>{project.name.slice(0, 2)}</AvatarFallback>
                 </Avatar>
                 <div>
@@ -174,7 +171,6 @@ export default function Profile() {
             <div key={request.id} className="flex items-center justify-between p-4 rounded-lg border">
               <div className="flex items-center gap-4">
                 <Avatar className="h-10 w-10">
-                  <AvatarImage src="/placeholder.svg" />
                   <AvatarFallback>{request.name.slice(0, 2)}</AvatarFallback>
                 </Avatar>
                 <div>

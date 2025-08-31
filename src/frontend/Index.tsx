@@ -1,19 +1,46 @@
 
+// React lets us build components using JSX
+import React from "react";
 
-const Index = () => {
+// Import our UI components
+import { Button } from "@/components/ui/button";
+
+// This is our main home page component
+function Index() {
+  // This function will run when the user clicks "Get Started"
+  function handleGetStarted() {
+    // You can add navigation logic here later
+    console.log("User clicked Get Started!");
+  }
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white-500">
-      <div className="text-center bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-4xl font-bold mb-4 text-gray-800">welcome to TeamJoin</h1>
-        <p className="text-xl text-gray-600">Start building your amazing teams and project here!</p>
+    // Main container - centers content on the page
+    <div className="min-h-screen flex items-center justify-center bg-background">
+      {/* Card container for our welcome content */}
+      <div className="text-center bg-card p-8 rounded-lg shadow-lg border border-border">
+        {/* Main title */}
+        <h1 className="text-4xl font-bold mb-4 text-foreground">
+          Welcome to TeamJoin
+        </h1>
+        
+        {/* Subtitle description */}
+        <p className="text-xl text-muted-foreground mb-6">
+          Start building your amazing teams and projects here!
+        </p>
+        
+        {/* Button container */}
         <div className="mt-4">
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          <Button 
+            onClick={handleGetStarted}
+            size="lg"
+            className="font-bold"
+          >
             Get Started
-          </button>
+          </Button>
         </div>
       </div>
     </div>
   );
-};
+}
 
 export default Index;

@@ -1,13 +1,20 @@
+// React for building components and managing state
 import { useState } from "react";
+
+// Import our UI components from the design system
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
+
+// Icons from lucide-react library
 import { ExternalLink, Github, Linkedin, Globe, Users, Edit } from "lucide-react";
 
+// Sample user profile data - in a real app, this would come from a database
 const profile = {
   name: "Jordan Lee",
   title: "Builder + designer. Passionate about AI for productivity, clean UX, and hackathon weekends.",
+  avatar: "/placeholder.svg",
   joined: 4,
   pending: 2,
   followers: 128,
@@ -18,6 +25,7 @@ const profile = {
   }
 };
 
+// Projects that the user has already joined
 const joinedProjects = [
   {
     id: 1,
@@ -42,6 +50,7 @@ const joinedProjects = [
   }
 ];
 
+// Requests that are still pending approval
 const pendingRequests = [
   {
     id: 1,
@@ -59,12 +68,18 @@ const pendingRequests = [
   }
 ];
 
+// Profile component - shows user's profile information and project activity
 export default function Profile() {
+  // State to track which requests the user has withdrawn
   const [withdrawnRequests, setWithdrawnRequests] = useState([]);
 
-  const handleWithdraw = (requestId) => {
-    setWithdrawnRequests(prev => [...prev, requestId]);
-  };
+  // Function that runs when user clicks "Withdraw" on a pending request
+  function handleWithdraw(requestId) {
+    // Add this request ID to our withdrawn list
+    setWithdrawnRequests(previousWithdrawn => [...previousWithdrawn, requestId]);
+    console.log(`User withdrew request ${requestId}!`);
+    // You can add API call logic here later
+  }
 
   return (
     <div className="max-w-4xl mx-auto space-y-6 animate-fade-in">
@@ -78,6 +93,7 @@ export default function Profile() {
         <CardContent className="p-8">
           <div className="flex flex-col md:flex-row gap-6 items-center md:items-start">
             <Avatar className="h-24 w-24">
+              <AvatarImage src={profile.avatar} />
               <AvatarFallback className="text-2xl">JL</AvatarFallback>
             </Avatar>
             
@@ -143,6 +159,7 @@ export default function Profile() {
             <div key={project.id} className="flex items-center justify-between p-4 rounded-lg border hover:bg-muted/50 transition-colors">
               <div className="flex items-center gap-4">
                 <Avatar className="h-10 w-10">
+                  <AvatarImage src="/placeholder.svg" />
                   <AvatarFallback>{project.name.slice(0, 2)}</AvatarFallback>
                 </Avatar>
                 <div>
@@ -171,6 +188,7 @@ export default function Profile() {
             <div key={request.id} className="flex items-center justify-between p-4 rounded-lg border">
               <div className="flex items-center gap-4">
                 <Avatar className="h-10 w-10">
+                  <AvatarImage src="/placeholder.svg" />
                   <AvatarFallback>{request.name.slice(0, 2)}</AvatarFallback>
                 </Avatar>
                 <div>

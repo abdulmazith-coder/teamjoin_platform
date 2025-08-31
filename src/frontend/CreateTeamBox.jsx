@@ -1,4 +1,7 @@
+// React for building components and managing state
 import { useState } from "react";
+
+// Import our UI components from the design system
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -7,89 +10,119 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
+// Icons from lucide-react library
 import { Plus, Upload, Globe, BookOpen } from "lucide-react";
+
+// Select dropdown component
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
+// List of available project categories
 const categories = ["EdTech", "AI/ML", "FinTech", "Health", "Productivity"];
+
+// Default roles that users can add to their projects
 const roles = [
   { name: "Full-stack Developer", count: 1, skills: ["Node/Next"] },
   { name: "Product Designer", count: 1, skills: ["UX/UI"] },
   { name: "Growth Marketer", count: 1, skills: ["SEO/Social"] }
 ];
 
+// CreateTeamBox component - this lets users create new project ideas
 export default function CreateTeamBox() {
+  // State to track which categories are selected
   const [selectedCategories, setSelectedCategories] = useState([]);
+  
+  // State to track the project roles and their counts
   const [projectRoles, setProjectRoles] = useState(roles);
+  
+  // State for form inputs with default values
   const [title, setTitle] = useState("AI Study Buddy");
   const [description, setDescription] = useState("Describe what you're building, the problem, and why now...");
   const [maxMembers, setMaxMembers] = useState("5");
   const [visibility, setVisibility] = useState("public");
 
-  const toggleCategory = (category) => {
-    setSelectedCategories(prev => 
-      prev.includes(category) 
-        ? prev.filter(c => c !== category)
-        : [...prev, category]
+  // Function to add/remove categories when user clicks on them
+  function toggleCategory(category) {
+    setSelectedCategories(previousCategories => 
+      // If category is already selected, remove it. Otherwise, add it.
+      previousCategories.includes(category) 
+        ? previousCategories.filter(c => c !== category)
+        : [...previousCategories, category]
     );
-  };
+  }
 
-  const updateRoleCount = (roleIndex, increment) => {
-    setProjectRoles(prev => prev.map((role, index) => 
+  // Function to increase or decrease the count for a specific role
+  function updateRoleCount(roleIndex, increment) {
+    setProjectRoles(previousRoles => previousRoles.map((role, index) => 
+      // Only update the role at the specified index
       index === roleIndex 
         ? { ...role, count: Math.max(0, role.count + (increment ? 1 : -1)) }
         : role
     ));
-  };
+  }
 
   return (
+    // Main container - centers content and adds fade animation
     <div className="max-w-4xl mx-auto animate-fade-in">
+      {/* Grid layout - 2 columns on large screens, 1 column on small */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Main Form */}
+        
+        {/* Left side - Main form takes up 2/3 of the width */}
         <div className="lg:col-span-2 space-y-6">
+          
+          {/* Page header with title and guidelines button */}
           <div className="flex items-center justify-between mb-6">
-            <h1 className="text-3xl font-bold">Create TeamBox</h1>
+            <h1 className="text-3xl font-bold text-foreground">Create TeamBox</h1>
             <Button variant="outline" size="sm">
               <BookOpen className="h-4 w-4 mr-2" />
               Guidelines
             </Button>
           </div>
 
-          {/* Project Details */}
-          <Card className="bg-surface-elevated">
+          {/* Project Details Card */}
+          <Card className="bg-card border-border">
             <CardHeader>
-              <h3 className="text-xl font-semibold">Project details</h3>
+              <h3 className="text-xl font-semibold text-foreground">Project details</h3>
             </CardHeader>
             <CardContent className="space-y-4">
+              
+              {/* Project title input */}
               <div>
-                <Label htmlFor="title">Title</Label>
+                <Label htmlFor="title" className="text-foreground">Title</Label>
                 <Input 
                   id="title"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                   className="mt-1"
+                  placeholder="Enter your project title"
                 />
               </div>
               
+              {/* Project description textarea */}
               <div>
-                <Label htmlFor="description">Description</Label>
+                <Label htmlFor="description" className="text-foreground">Description</Label>
                 <Textarea 
                   id="description"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   rows={4}
                   className="mt-1"
+                  placeholder="Describe your project idea..."
                 />
-                <p className="text-xs text-text-secondary mt-1">
+                <p className="text-xs text-muted-foreground mt-1">
                   Tip: Include goals, audience, tech stack, and milestones.
                 </p>
               </div>
               
+              {/* Category selection - users can click to select multiple */}
               <div>
-                <Label>Category</Label>
+                <Label className="text-foreground">Category</Label>
                 <div className="flex flex-wrap gap-2 mt-2">
+                  {/* Loop through each category and create a clickable badge */}
                   {categories.map((category) => (
                     <Badge
                       key={category}
+                      // Change appearance based on whether it's selected
                       variant={selectedCategories.includes(category) ? "default" : "secondary"}
                       className="cursor-pointer hover:bg-primary/80 transition-colors"
                       onClick={() => toggleCategory(category)}

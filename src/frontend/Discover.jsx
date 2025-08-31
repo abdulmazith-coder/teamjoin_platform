@@ -1,11 +1,19 @@
+// React for building components and managing state
 import { useState } from "react";
+
+// Import our UI components from the design system
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
+
+// Icons from lucide-react library
 import { Filter, Users } from "lucide-react";
+
+// Select dropdown component
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
+// Sample project data - in a real app, this would come from a database
 const projects = [
   {
     id: 1,
@@ -63,17 +71,26 @@ const projects = [
   }
 ];
 
+// Filter options for the discover page
 const categories = ["All", "AI", "Fintech", "Health", "EdTech", "Marketplace", "Social", "Travel", "Wellness"];
 const difficulties = ["All", "Beginner", "Intermediate", "Advanced"];
 const locations = ["All", "Remote", "On-site"];
 
+// Discover component - shows all available project ideas that users can join
 export default function Discover() {
+  // State to track which category filter is selected
   const [selectedCategory, setSelectedCategory] = useState("All");
+  
+  // State to track which projects the user has requested to join
   const [requestedProjects, setRequestedProjects] = useState([]);
 
-  const handleRequestJoin = (projectId) => {
-    setRequestedProjects(prev => [...prev, projectId]);
-  };
+  // Function that runs when user clicks "Request to Join" on a project
+  function handleRequestJoin(projectId) {
+    // Add this project ID to our list of requested projects
+    setRequestedProjects(previousRequests => [...previousRequests, projectId]);
+    console.log(`User requested to join project ${projectId}!`);
+    // You can add API call logic here later
+  }
 
   return (
     <div className="space-y-6 animate-fade-in">

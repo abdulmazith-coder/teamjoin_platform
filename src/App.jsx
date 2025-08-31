@@ -12,6 +12,7 @@ import CreateTeamBox from "./frontend/CreateTeamBox";
 import IdeaDetail from "./frontend/IdeaDetail";
 import NotFound from "./frontend/NotFound";
 
+
 const queryClient = new QueryClient();
 
 // TeamJoin - Connect with talented teammates and build together
@@ -30,6 +31,7 @@ const App = () => (
             <Route path="/team-management" element={<TeamManagement />} />
             <Route path="/create" element={<CreateTeamBox />} />
             <Route path="/idea/:id" element={<IdeaDetail />} />
+         
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Layout>

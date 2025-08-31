@@ -1,4 +1,4 @@
-import { Home, Search, User, Users, Plus, Menu } from "lucide-react";
+import { Home, Search, User, Users, Plus, Menu, Shield } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import {
   Sidebar,
@@ -16,6 +16,7 @@ const navigation = [
   { name: "Profile", href: "/profile", icon: User },
   { name: "Team Management", href: "/team-management", icon: Users },
   { name: "Create TeamBox", href: "/create", icon: Plus },
+  { name: "IVC", href: "/ivc", icon: Shield },
 ];
 
 export function AppSidebar() {
